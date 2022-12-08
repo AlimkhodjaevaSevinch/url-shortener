@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+    <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">№</th>
+            <th scope="col">Short</th>
+            <th scope="col">Original</th>
+            <th scope="col">Clicks</th>
+            <th scope="col">Creation Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for url in urls %}
+                <tr>
+                    <th scope="row">{{ url.id }}</th>
+                    <td>
+                        <span><a href="{{ url.short_url }}" target="_blank">{{ request.host_url + url.short_url }}</a></span>
+                    </td>
+                    <td>
+                        <span><a href="{{ url.long_url }}" target="_blank">{{ url.long_url }}</a></span>
+                    </td>
+                    <td>{{ url.clicks }}</td>
+                    <td>{{ url.time_to_create }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
